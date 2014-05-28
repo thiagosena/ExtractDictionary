@@ -20,12 +20,10 @@ public class PTBParser {
         String[] result = fileContent.replace("\n", " ").split(" ");
         for (String s : result) {
             if (s.contains(")") && (s.charAt(0)) != '.') {
-                if (s.charAt(s.length()-1) == ')') {
-                    while(s.charAt(s.length()-1) == ')') {
-                        s = s.substring(0, s.length()-1);
-                    }
-                    tree.put(s, null);
+                while(s.charAt(s.length()-1) == ')') {
+                    s = s.substring(0, s.length()-1);
                 }
+                tree.put(s, s);
             }
         }
     }
