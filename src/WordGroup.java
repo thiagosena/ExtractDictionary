@@ -24,11 +24,11 @@ public class WordGroup {
     public boolean isSimilar(String s){
         for (Iterator<String> it = words.iterator(); it.hasNext();) {
             String word = it.next();
-            if (computeEditDistance(word, s) != 1){
-                return false;
+            if (computeEditDistance(word, s) == 1){
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public static int computeEditDistance(String s1, String s2) {
