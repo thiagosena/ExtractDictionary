@@ -49,6 +49,14 @@ public class PTBParser {
         return s.contains("V");
     }
 
+    private boolean isAdverb(String s) {
+        return s.contains("RB");
+    }
+
+    private boolean isAdjective(String s) {
+        return s.contains("JJ");
+    }
+
     public void parseSubstantives(TreeMap tree) throws IOException {
 
         BufferedReader br = new BufferedReader(file);
@@ -92,6 +100,60 @@ public class PTBParser {
 
                 if (isWord(word)) {
                     if (isVerb(elements[i-1])){
+                        // Remove os últimos parênteses
+                        while (word.charAt(word.length() - 1) == ')') {
+                            word = word.substring(0, word.length() - 1);
+                        }
+                        tree.put(word,word);
+                    }
+                }
+            }
+        }
+    }
+
+    public void parseAdverbs(TreeMap tree) throws IOException {
+
+        BufferedReader br = new BufferedReader(file);
+        String line = null;
+
+        while((line = br.readLine()) != null) {
+            String[] elements = line.split(" ");
+
+            for (int i = 0; i < elements.length; i++) {
+
+                // Verifica se o elemento é uma palavra
+                // – ou seja, termina com ')'.
+                String word = elements[i];
+
+                if (isWord(word)) {
+                    if (isAdverb(elements[i-1])){
+                        // Remove os últimos parênteses
+                        while (word.charAt(word.length() - 1) == ')') {
+                            word = word.substring(0, word.length() - 1);
+                        }
+                        tree.put(word,word);
+                    }
+                }
+            }
+        }
+    }
+
+    public void parseAdjectives(TreeMap tree) throws IOException {
+
+        BufferedReader br = new BufferedReader(file);
+        String line = null;
+
+        while((line = br.readLine()) != null) {
+            String[] elements = line.split(" ");
+
+            for (int i = 0; i < elements.length; i++) {
+
+                // Verifica se o elemento é uma palavra
+                // – ou seja, termina com ')'.
+                String word = elements[i];
+
+                if (isWord(word)) {
+                    if (isAdjective(elements[i-1])){
                         // Remove os últimos parênteses
                         while (word.charAt(word.length() - 1) == ')') {
                             word = word.substring(0, word.length() - 1);
