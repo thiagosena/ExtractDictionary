@@ -11,8 +11,22 @@ public class Main {
 
         PTBParser parser = new PTBParser("ptb-flat.txt");
 
-        parser.parseSubstantives(tree);
+        parser.parseVerbs(tree);
 
+        /*for (Map.Entry<String, String> entry : tree.entrySet()) {
+            System.out.println(entry.getKey());
+        }*/
+
+        /*tree.put("pray","pray");
+        tree.put("rise","rise");
+        tree.put("rime","rime");
+        tree.put("ring","ring");
+        tree.put("play","play");
+        tree.put("raise","raise");
+        tree.put("rint","rint");
+        tree.put("trim","trim");
+        */
         tree.groupWords();
+        tree.printGroups();
     }
 }
