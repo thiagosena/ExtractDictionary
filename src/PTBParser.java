@@ -37,26 +37,6 @@ public class PTBParser {
         }
     }
 
-    private boolean isWord(String s) {
-        return s.contains(")") && (s.charAt(0) != '.');
-    }
-
-    private boolean isSubstantive(String s) {
-        return s.contains("NN");
-    }
-
-    private boolean isVerb(String s) {
-        return s.contains("V");
-    }
-
-    private boolean isAdverb(String s) {
-        return s.contains("RB");
-    }
-
-    private boolean isAdjective(String s) {
-        return s.contains("JJ");
-    }
-
     public void parseSubstantives(TreeMap tree) throws IOException {
 
         BufferedReader br = new BufferedReader(file);
@@ -99,7 +79,7 @@ public class PTBParser {
                 String word = elements[i];
 
                 if (isWord(word)) {
-                    if (isVerb(elements[i-1])){
+                    if (isVerb(elements[i - 1])){
                         // Remove os últimos parênteses
                         while (word.charAt(word.length() - 1) == ')') {
                             word = word.substring(0, word.length() - 1);
@@ -153,7 +133,7 @@ public class PTBParser {
                 String word = elements[i];
 
                 if (isWord(word)) {
-                    if (isAdjective(elements[i-1])){
+                    if (isAdjective(elements[i - 1])){
                         // Remove os últimos parênteses
                         while (word.charAt(word.length() - 1) == ')') {
                             word = word.substring(0, word.length() - 1);
@@ -163,5 +143,25 @@ public class PTBParser {
                 }
             }
         }
+    }
+
+    private boolean isWord(String s) {
+        return s.contains(")") && (s.charAt(0) != '.');
+    }
+
+    private boolean isSubstantive(String s) {
+        return s.contains("NN");
+    }
+
+    private boolean isVerb(String s) {
+        return s.contains("V");
+    }
+
+    private boolean isAdverb(String s) {
+        return s.contentEquals("(RB");
+    }
+
+    private boolean isAdjective(String s) {
+        return s.contains("JJ");
     }
 }
