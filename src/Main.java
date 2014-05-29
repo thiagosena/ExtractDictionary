@@ -11,7 +11,7 @@ public class Main {
 
         PTBParser parser = new PTBParser("ptb-flat.txt");
 
-        parser.parseAll(tree);
+        parser.parseSubstantives(tree);
 
         for (Map.Entry<String, String> entry : tree.entrySet()) {
             System.out.println(entry.getKey());
