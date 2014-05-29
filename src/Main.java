@@ -7,14 +7,12 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException, IOException{
 
-        TreeMap<String, String> tree = new TreeMap();
+        WordsTree tree = new WordsTree();
 
         PTBParser parser = new PTBParser("ptb-flat.txt");
 
         parser.parseSubstantives(tree);
 
-        for (Map.Entry<String, String> entry : tree.entrySet()) {
-            System.out.println(entry.getKey());
-        }
+        tree.groupWords();
     }
 }

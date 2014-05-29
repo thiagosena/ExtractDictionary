@@ -1,30 +1,34 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+
 /**
  * Created by bernardog on 28/05/14.
  */
 public class WordGroup {
 
-    private String[] words;
+    private ArrayList<String> words;
 
-    public WordGroup(String[] words) {
-        this.words = words;
+    public WordGroup(String s) {
+        this.words = new ArrayList<String>();
+        this.words.add(s);
     }
 
-    public String[] getWords() {
+    public ArrayList<String> getWords() {
         return words;
     }
 
-    public void setWords(String[] words) {
+    public void setWords(ArrayList<String> words) {
         this.words = words;
     }
 
     public boolean isSimilar(String s){
-        boolean result = true;
-        for (String word : words) {
+        for (Iterator<String> it = words.iterator(); it.hasNext();) {
+            String word = it.next();
             if (computeEditDistance(word, s) > 1){
-                result = false;
+                return false;
             }
         }
-        return result;
+        return true;
     }
 
     public static int computeEditDistance(String s1, String s2) {
