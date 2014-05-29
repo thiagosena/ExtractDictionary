@@ -59,7 +59,6 @@ public class WordsTree extends TreeMap<String, String> {
 
     public void printGroups(){
         for (WordGroup group : groups) {
-            //Ha um problema de loop infinito. descomente o bloco e teste!
             if(group.getWords().size() > 1){
                 System.out.println("======GRUPO====");
                 for (String s : group.getWords()) {
