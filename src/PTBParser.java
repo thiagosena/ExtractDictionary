@@ -45,6 +45,10 @@ public class PTBParser {
         return s.contains("NN");
     }
 
+    private boolean isVerb(String s) {
+        return s.contains("V");
+    }
+
     public void parseSubstantives(TreeMap tree) throws IOException {
 
         BufferedReader br = new BufferedReader(file);
@@ -61,6 +65,33 @@ public class PTBParser {
 
                 if (isWord(word)) {
                     if (isSubstantive(elements[i-1])){
+                        // Remove os últimos parênteses
+                        while (word.charAt(word.length() - 1) == ')') {
+                            word = word.substring(0, word.length() - 1);
+                        }
+                        tree.put(word,word);
+                    }
+                }
+            }
+        }
+    }
+
+    public void parseVerbs(TreeMap tree) throws IOException {
+
+        BufferedReader br = new BufferedReader(file);
+        String line = null;
+
+        while((line = br.readLine()) != null) {
+            String[] elements = line.split(" ");
+
+            for (int i = 0; i < elements.length; i++) {
+
+                // Verifica se o elemento é uma palavra
+                // – ou seja, termina com ')'.
+                String word = elements[i];
+
+                if (isWord(word)) {
+                    if (isVerb(elements[i-1])){
                         // Remove os últimos parênteses
                         while (word.charAt(word.length() - 1) == ')') {
                             word = word.substring(0, word.length() - 1);
