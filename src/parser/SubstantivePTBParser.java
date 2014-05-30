@@ -6,18 +6,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.TreeMap;
 
-/**
- * Created by bernardog on 29/05/14.
- */
-public class SubstantivePTBParser implements PTBParser {
+public class SubstantivePTBParser implements PTBParser{
 
     private FileReader file;
 
     public SubstantivePTBParser(String file) throws FileNotFoundException {
         this.file = new FileReader(file);
     }
-
-    @Override
+	
+	@Override
     public void parse(TreeMap tree) throws IOException {
         BufferedReader br = new BufferedReader(file);
         String line = null;
@@ -37,11 +34,12 @@ public class SubstantivePTBParser implements PTBParser {
         }
     }
 
-    private boolean isWord(String s) {
+    public boolean isWord(String s) {
         return s.contains(")") && (s.charAt(0) != '.');
     }
 
-    private boolean isSubstantive(String s) {
+    public boolean isSubstantive(String s) {
         return s.contains("NN");
     }
+
 }

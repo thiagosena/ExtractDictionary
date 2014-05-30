@@ -36,11 +36,11 @@ public class AdverbPTBParser implements PTBParser{
         }
     }
 
-    private boolean isAdverb(String s) {
+    public boolean isAdverb(String s) {
         return s.contentEquals("(RB");
     }
 
-    private boolean isWord(String s) {
+    public boolean isWord(String s) {
         return s.contains(")") && (s.charAt(0) != '.');
     }
 }

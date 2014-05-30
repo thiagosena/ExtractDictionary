@@ -39,7 +39,7 @@ public class AllPTBParser implements PTBParser{
         }
     }
 
-    private boolean isWord(String s) {
+    public boolean isWord(String s) {
         return s.contains(")") && (s.charAt(0) != '.');
     }
 

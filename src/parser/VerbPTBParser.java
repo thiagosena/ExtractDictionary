@@ -45,11 +45,11 @@ public class VerbPTBParser implements PTBParser{
         }
     }
 
-    private boolean isWord(String s) {
+    public boolean isWord(String s) {
         return s.contains(")") && (s.charAt(0) != '.');
     }
 
-    private boolean isVerb(String s) {
+    public boolean isVerb(String s) {
         return s.contains("V");
     }
 

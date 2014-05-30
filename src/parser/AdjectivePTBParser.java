@@ -44,11 +44,11 @@ public class AdjectivePTBParser implements PTBParser{
         }
     }
 
-    private boolean isWord(String s) {
+    public boolean isWord(String s) {
         return s.contains(")") && (s.charAt(0) != '.');
     }
 
-    private boolean isAdjective(String s) {
+    public boolean isAdjective(String s) {
         return s.contains("JJ");
     }
 
