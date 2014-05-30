@@ -1,1 +1,5 @@
-*.class
+out/*
+.DS_Store
+.idea/copyright/profiles_settings.xml
+.idea/workspace.xml
+ExtractDictionary.iml
