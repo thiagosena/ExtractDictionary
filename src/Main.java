@@ -12,7 +12,7 @@ public class Main {
 
         WordsTree tree = new WordsTree();
 
-        PTBParser parser = new AdjectivePTBParser("ptb-flat.txt");
+        PTBParser parser = new AllPTBParser("ptb-flat.txt");
 
         parser.parse(tree);
 
